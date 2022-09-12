@@ -1,0 +1,6 @@
+*.o
+MyForce.exe
+.vscode
+drawgraph/*
+!drawgraph/drawgraph.*
+!drawgraph/draw.*
