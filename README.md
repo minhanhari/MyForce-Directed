@@ -18,7 +18,7 @@ make
 
 # 1. Неориентированные графы
 
-Понятие неориентированного графа является основным в теории графов, в частности в так называемой математической теории графов. Существуют несколько определений графа, в общем случае графом можно называться пара <img src="https://latex.codecogs.com/gif.latex?E">, где <img src="https://latex.codecogs.com/gif.latex?V"> – множество вершин графа, а <img src="https://latex.codecogs.com/gif.latex?E"> – множество ребер. Две вершины <img src="https://latex.codecogs.com/gif.latex?v"> и <img src="https://latex.codecogs.com/gif.latex?u"> образуют ребро графа, если <img src="https://render.githubusercontent.com/render/math?math=\{u,v\} \in E">. Если <img src="https://latex.codecogs.com/gif.latex?\{v,u\} \in E">. следует, что <img src="https://latex.codecogs.com/gif.latex?\{u,v\} \in E">., то граф является неориентированным. В противном случае это ориентированный граф.
+Понятие неориентированного графа является основным в теории графов, в частности в так называемой математической теории графов. Существуют несколько определений графа, в общем случае графом можно называться пара <img src="http://www.sciweavers.org/upload/Tex2Img_1663000094/render.png">, где <img src="http://www.sciweavers.org/upload/Tex2Img_1662999985/render.png"> – множество вершин графа, а <img src="http://www.sciweavers.org/upload/Tex2Img_1662999902/render.png"> – множество ребер. Две вершины <img src="http://www.sciweavers.org/upload/Tex2Img_1663000139/render.png"> образуют ребро графа, если <img src="http://www.sciweavers.org/upload/Tex2Img_1662999250/render.png">. Если <img src="http://www.sciweavers.org/upload/Tex2Img_1662999250/render.png">. следует, что <img src="http://www.sciweavers.org/upload/Tex2Img_1663000200/render.png">., то граф является неориентированным. В противном случае это ориентированный граф.
 
 _Визуализация графа_ или _сетевой диаграммы_ — это графическое представление вершин и ребер графа. Визуализация не следует путать с самим графом: одному и тому же графу могут соответствовать очень разные раскладки.
 
@@ -35,7 +35,7 @@ _Визуализация графа_ или _сетевой диаграммы_
 Сообщества являются свойством многих сетей, в которых конкретная сеть может иметь несколько сообществ, так что узлы внутри сообщества тесно связаны. Узлы в нескольких сообществах могут перекрываться.
 
 Также нам потребуется некоторая числовая характеристика, которая описывает выраженность структуры сообществ в данном графе, называемая модулярностью:
-<img src="https://latex.codecogs.com/gif.latex?Q=\dfrac{1}{2m}\sum_{i,j}^{}\left ( A_{ij} - \frac{d_id_j}{2m} \right )\delta \left ( C_i,C_j \right )">
+<img src="http://www.sciweavers.org/upload/Tex2Img_1663000238/render.png">
 где <img src="https://latex.codecogs.com/gif.latex?\delta(C_i,C_j)">— дельта-функция, равная единице, если <img src="https://latex.codecogs.com/gif.latex?C_i=C_j"> и нулю иначе.
 
 Попытаемся понять, что она означает. Возьмём две произвольные вершины <img src="https://latex.codecogs.com/gif.latex?i; j">. Вероятность появления ребра между ними при генерации случайного графа с таким же количеством вершин и рёбер, как у исходного графа, равна <img src="https://latex.codecogs.com/gif.latex?\dfrac{d_id_j}{2m}">. Реальное количество рёбер в сообществе <img src="https://latex.codecogs.com/gif.latex?C"> будет равняться <img src="https://latex.codecogs.com/gif.latex?\sum_{i,j \in C} A_{ij}">.
