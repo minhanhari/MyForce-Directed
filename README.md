@@ -335,7 +335,8 @@ int calcDelta(struct Graph gr, double **k, double **l, double *Delta)
 
 ```
 
-<img src="https://raw.githubusercontent.com/minhanhari/MyForce-Directed/main/img/Local%20minimum.png">
 Раскладка графа Local minmum - Kamada - Kawaii
+<img src="https://raw.githubusercontent.com/minhanhari/MyForce-Directed/main/img/Local%20minimum.png">
 
+Раскладка графа Force-directed layout - Fruchterman - Reingold
 <img src="https://raw.githubusercontent.com/minhanhari/MyForce-Directed/main/img/Force directed.png">
