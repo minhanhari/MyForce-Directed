@@ -47,7 +47,7 @@ _Визуализация графа_ или _сетевой диаграммы_
 Для каждой пары вершин связного графа можно вычислить кратчайший путь, их соединяющий. Будем считать, что каждый такой путь имеет вес, равный 1/N, где N — число возможных кратчайших путей между выбранной парой вершин. Если такие веса посчитать для всех пар вершин, то каждому ребру можно поставить в соответствие значение Edge betweenness — сумму весов путей, прошедших через это ребро.
 
 Для ясности приведём следующую иллюстрацию:
-<img src="">
+<img src="https://raw.githubusercontent.com/minhanhari/MyForce-Directed/blob/main/img/Edge%20betweeness.png">
 
 Граф, для ребёр которого посчитаны значения Edge betweenness
 В данном графе хочется выделить два сообщества: с вершинами 1-5 и 6-10. Граница же будет проходить через ребро, имеющее максимальный вес, 25. На этой идее и основывается алгоритм: поэтапно удаляем ребра с наибольшим весом, а оставшиеся компоненты связности объявляем сообществами. Алгоритм состроит из 6 этапов:
@@ -61,7 +61,7 @@ _Визуализация графа_ или _сетевой диаграммы_
 
 ## 2.5. MultiLevel – метод Louvain
 
-<img src="">
+<img src="https://raw.githubusercontent.com/minhanhari/MyForce-Directed/main/img/Multilevel.jpg">
 
 Илюстрация работы алгоритма Multilevel: два прохода, для первого показаны оба этапа
 
@@ -333,3 +333,8 @@ int calcDelta(struct Graph gr, double **k, double **l, double *Delta)
 }
 
 ```
+
+<img src="https://raw.githubusercontent.com/minhanhari/MyForce-Directed/main/img/Local%20minimum.png">
+Раскладка графа Local minmum - Kamada - Kawaii
+
+<img src="https://raw.githubusercontent.com/minhanhari/MyForce-Directed/main/img/Force directed.png">
