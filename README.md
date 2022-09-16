@@ -1,3 +1,7 @@
+### Introduction
+
+This is an implementation of two Spring-embedder algorithms used for graph layout: Force-directed (Fruchterman - Reingold) and Local minimum energy (Kamada- Kawaii) in C language.
+
 ### Instruction
 
 Generate matrix vertexes and edges:
