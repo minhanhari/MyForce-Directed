@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "vertex.h"
 
@@ -15,7 +16,7 @@ double getY(struct Vertex vertex)
 
 void printVertex(struct Vertex vertex)
 {
-    printf("%i : %lf , %lf\n", vertex.name, getX(vertex), getY(vertex));
+    printf("%s : %lf , %lf\n", vertex.name, getX(vertex), getY(vertex));
 }
 
 int VertexListLen(struct VertexList *list)
@@ -46,23 +47,23 @@ struct VertexList *addVertex(struct VertexList **list, struct Vertex *vertex)
 
         while (lastVertex->nextPtr != NULL)
         {
-            if (lastVertex->data->name == vertex->name)
+            if (strcmp(lastVertex->data->name, vertex->name) == 0)
             {
-                printf("Vertex %i already exist in graph.\n", vertex->name);
+                // printf("Vertex %s already exist in graph.\n", vertex->name);
                 return lastVertex;
             }
             else
                 lastVertex = lastVertex->nextPtr;
         }
-        if (lastVertex->data->name == vertex->name)
+        if (strcmp(lastVertex->data->name, vertex->name) == 0)
         {
-            printf("Vertex %i already exist in graph.\n", vertex->name);
+            // printf("Vertex %s already exist in graph.\n", vertex->name);
             return lastVertex;
         }
         else
             lastVertex->nextPtr = toAdd;
     }
 
-    printf("Vertex %i added to graph.\n", vertex->name);
+    printf("Vertex %s added to graph.\n", vertex->name);
     return toAdd;
 }

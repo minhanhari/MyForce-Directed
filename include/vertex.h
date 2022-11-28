@@ -8,7 +8,7 @@
 
 struct Vertex
 {
-    int name;
+    char* name;
     struct Vector location;
 };
 

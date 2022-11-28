@@ -29,6 +29,6 @@ void initVerticesPosition(struct Graph *graph, bool random);
 
 void ForceDirectedLayout(struct Graph *graph, int max_iteration);
 
-void LocalMinimum(struct Graph *gr, double Lo, double K);
+void LocalMinimum(struct Graph *gr, double eps);
 
 #endif // INCLUDE_GRAPH_H

@@ -5,6 +5,7 @@
 #include <fstream>
 #include <sstream>
 #include <vector>
+#include <string.h>
 
 using namespace std;
 
@@ -23,10 +24,31 @@ bool performCommand(QPainter *qp, const vector<string> &args)
 
         int x = stoi(args[2]), y = stoi(args[3]);
 
-        QBrush brush(QColor::fromRgb(15, 76, 129));
+        QColor color;
+        char category[3];
+        strncpy(category, args[1].c_str(), 3);
+        printf("%s\n", category);
+        if (strstr(category, "EXT"))
+            color = QColor::fromRgb(18, 162, 86);
+        else if (strstr(category, "EST"))
+            color = QColor::fromRgb(222, 126, 170);
+        else if (strstr(category, "AGR"))
+            color = QColor::fromRgb(233, 126, 30);
+        else if (strstr(category, "CSN"))
+            color = QColor::fromRgb(35, 142, 199);
+        else if (strstr(category, "OPN"))
+            color = QColor::fromRgb(238, 237, 105);
+        else
+            color = Qt::red;
+        QBrush brush(color);
         qp->setBrush(brush);
-        qp->drawEllipse(x - 5, y - 5, 10, 10);
-        qp->drawText(x, y, args[1].c_str());
+        QPen pen(Qt::black, 0, Qt::SolidLine);
+        qp->setPen(pen);
+        qp->drawEllipse(x - 14, y - 14, 28, 28);
+        QFont font;
+        font.setPointSize(6);
+        qp->setFont(font);
+        qp->drawText(x + 14, y + 14, args[1].c_str());
         return true;
     }
 
@@ -40,7 +62,7 @@ bool performCommand(QPainter *qp, const vector<string> &args)
         int x1 = stoi(args[1]), y1 = stoi(args[2]);
         int x2 = stoi(args[3]), y2 = stoi(args[4]);
 
-        QPen pen(Qt::darkGray, 2, Qt::SolidLine);
+        QPen pen(Qt::lightGray, 2, Qt::SolidLine);
         qp->setPen(pen);
         qp->drawLine(x1, y1, x2, y2);
 

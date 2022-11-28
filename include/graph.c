@@ -5,7 +5,7 @@
 
 #include "graph.h"
 
-const int LENGTH = 100;
+const double LENGTH = 100.0;
 
 struct Graph *newGraph(struct VertexList *vertexes, struct EdgeList *edges)
 {
@@ -152,7 +152,7 @@ void ForceDirectedLayout(struct Graph *graph, int max_iteration)
         }
 
         // Stop when total movement falls under a certain range
-        if (total_displacement < 0.0001 * (v_num))
+        if (total_displacement < 0.0005 * (v_num))
             stop_count++;
 
         t = cool(t);
@@ -209,12 +209,14 @@ int **floyd_warshall(struct Graph gr)
     return dist;
 }
 
-void LocalMinimum(struct Graph *gr, double Lo, double K)
+void LocalMinimum(struct Graph *gr, double eps)
 {
     // Two dimensional array of shortest path between two vertexes
     // Calculate using Floyd-Warshall algorithm
     int **d = floyd_warshall(*gr);
     int v_num = gr->vertexes_num;
+    double Lo = LENGTH * 4 / v_num;
+    double K = 100;
 
     int d_max = d[0][0];
     for (int i = 0; i < v_num; i++)
@@ -242,7 +244,6 @@ void LocalMinimum(struct Graph *gr, double Lo, double K)
     // Moving the vertex with highest energy decrease
     double *Delta = (double *)malloc(sizeof(double) * v_num);
     int max_i = calcDelta(gr, k, l, Delta);
-    double eps = 0.001;
     while (Delta[max_i] > eps)
     {
         while (Delta[max_i] > eps)

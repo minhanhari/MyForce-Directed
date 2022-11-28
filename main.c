@@ -3,7 +3,8 @@
 #include "include/vertex.h"
 #include "include/vector.h"
 
-const int DEFAULT_MAX_ITERATIONS = 500;
+const int DEFAULT_MAX_ITERATIONS = 100;
+const double DEFAULT_EPSILON = 0.005;
 
 /* Arrange vertexes' positions so they will fit in drawing area */
 void ArrangeVertexPosition(struct Graph *graph, double width, double height)
@@ -57,22 +58,22 @@ struct Graph *readGraphFromFile(const char *filename)
         exit(1);
     }
 
-    char *str = (char *)malloc(10);
+    char *str = (char *)malloc(20);
 
     struct VertexList *vert_list = NULL;
     struct EdgeList *edge_list = NULL;
 
     while (fgets(str, 10, f) != NULL)
     {
-        int x;
-        if (sscanf(str, "%d", &x) == 1)
+        char *x = (char *)malloc(10);
+        if (sscanf(str, "%s", x) == 1)
         {
             struct Vertex *a = (struct Vertex *)malloc(sizeof(struct Vertex));
             a->name = x;
             a->location = new_vector(0, 0);
             a = addVertex(&vert_list, a)->data;
-            int y;
-            if (sscanf(str, "%d %*s %d", &x, &y) == 2)
+            char *y = (char *)malloc(10);
+            if (sscanf(str, "%s %s", x, y) == 2)
             {
                 struct Vertex *b = (struct Vertex *)malloc(sizeof(struct Vertex));
                 b->name = y;
@@ -105,9 +106,10 @@ int main()
     initVerticesPosition(gr, random);
 
     ForceDirectedLayout(gr, DEFAULT_MAX_ITERATIONS);
+    // LocalMinimum(gr, DEFAULT_EPSILON);
 
-    double width = 500;
-    double height = 500;
+    double width = 1000;
+    double height = 1000;
     ArrangeVertexPosition(gr, width, height);
 
     FILE *f = fopen("out_graph.txt", "w");
@@ -127,7 +129,7 @@ int main()
     for (int i = 0; i < gr->vertexes_num; i++)
     {
         struct Vertex t_vtx = *gr->vertexes[i];
-        fprintf(f, "v %i %i %i\n", t_vtx.name, (int)getX(t_vtx), (int)getY(t_vtx));
+        fprintf(f, "v %s %i %i\n", t_vtx.name, (int)getX(t_vtx), (int)getY(t_vtx));
     }
 
     fclose(f);

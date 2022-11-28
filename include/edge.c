@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "edge.h"
 
@@ -41,14 +42,14 @@ struct EdgeList *addEdge(struct EdgeList **list, struct Edge *edge)
         {
             struct Vertex *st_v = lastEdge->data->start;
             struct Vertex *en_v = lastEdge->data->end;
-            if (st_v->name == edge->start->name && en_v->name == edge->end->name)
+            if (strcmp(st_v->name, edge->start->name) == 0 && strcmp(en_v->name, edge->end->name) == 0)
             {
-                printf("Edge %i - %i already exist in graph.", edge->start->name, edge->end->name);
+                // printf("Edge %s - %s already exist in graph.", edge->start->name, edge->end->name);
                 return lastEdge;
             }
-            else if (st_v->name == edge->end->name && en_v->name == edge->start->name)
+            else if (strcmp(st_v->name, edge->end->name) == 0 && strcmp(en_v->name, edge->start->name) == 0)
             {
-                printf("Edge %i - %i already exist in graph.\n", edge->start->name, edge->end->name);
+                // printf("Edge %s - %s already exist in graph.\n", edge->start->name, edge->end->name);
                 return lastEdge;
             }
             else
@@ -56,20 +57,20 @@ struct EdgeList *addEdge(struct EdgeList **list, struct Edge *edge)
         }
         struct Vertex *st_v = lastEdge->data->start;
         struct Vertex *en_v = lastEdge->data->end;
-        if (st_v->name == edge->start->name && en_v->name == edge->end->name)
+        if (strcmp(st_v->name, edge->start->name) == 0 && strcmp(en_v->name, edge->end->name) == 0)
         {
-            printf("Edge %i - %i already exist in graph.", edge->start->name, edge->end->name);
+            // printf("Edge %s - %s already exist in graph.", edge->start->name, edge->end->name);
             return lastEdge;
         }
-        else if (st_v->name == edge->end->name && en_v->name == edge->start->name)
+        else if (strcmp(st_v->name, edge->end->name) == 0 && strcmp(en_v->name, edge->start->name) == 0)
         {
-            printf("Edge %i - %i already exist in graph.\n", edge->start->name, edge->end->name);
+            // printf("Edge %s - %s already exist in graph.\n", edge->start->name, edge->end->name);
             return lastEdge;
         }
         else
             lastEdge->nextPtr = toAdd;
     }
 
-    printf("Edge %i - %i added to graph.\n", edge->start->name, edge->end->name);
+    printf("Edge %s - %s added to graph.\n", edge->start->name, edge->end->name);
     return toAdd;
 }

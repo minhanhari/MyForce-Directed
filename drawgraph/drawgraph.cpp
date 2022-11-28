@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
     window.setAutoFillBackground(true);
     window.setPalette(pal);
 
-    window.resize(500, 500);
+    window.resize(1000, 1000);
     window.setWindowTitle("Force-Directed Layout");
     window.show();
 
