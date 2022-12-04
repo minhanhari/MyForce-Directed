@@ -4,7 +4,7 @@
 #include "include/vector.h"
 
 const int DEFAULT_MAX_ITERATIONS = 100;
-const double DEFAULT_EPSILON = 0.005;
+const double DEFAULT_EPSILON = 0.01;
 
 /* Arrange vertexes' positions so they will fit in drawing area */
 void ArrangeVertexPosition(struct Graph *graph, double width, double height)

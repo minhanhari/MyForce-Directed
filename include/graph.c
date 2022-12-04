@@ -215,7 +215,8 @@ void LocalMinimum(struct Graph *gr, double eps)
     // Calculate using Floyd-Warshall algorithm
     int **d = floyd_warshall(*gr);
     int v_num = gr->vertexes_num;
-    double Lo = LENGTH * 4 / v_num;
+    int e_num = gr->edges_num;
+    double Lo = LENGTH * 10 / e_num;
     double K = 100;
 
     int d_max = d[0][0];
