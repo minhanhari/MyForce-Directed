@@ -105,8 +105,8 @@ int main()
 
     initVerticesPosition(gr, random);
 
-    ForceDirectedLayout(gr, DEFAULT_MAX_ITERATIONS);
-    // LocalMinimum(gr, DEFAULT_EPSILON);
+    // ForceDirectedLayout(gr, DEFAULT_MAX_ITERATIONS);
+    LocalMinimum(gr, DEFAULT_EPSILON);
 
     double width = 1000;
     double height = 1000;

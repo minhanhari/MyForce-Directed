@@ -19,3 +19,4 @@ SOURCES += draw.cpp drawgraph.cpp
 QT += widgets
 QT += gui
 QT += core
+QT += svg

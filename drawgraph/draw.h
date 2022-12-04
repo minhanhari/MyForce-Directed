@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QWidget>
+#include <QSvgGenerator>
 
 class Draw : public QWidget
 {
@@ -11,4 +12,9 @@ public:
 protected:
     void paintEvent(QPaintEvent *event);
     void drawGraph(QPainter *qp);
+    void renderSvgFile();
+
+private:
+    QString path;
+    QSvgGenerator generator;
 };

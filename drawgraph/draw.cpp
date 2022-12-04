@@ -1,4 +1,6 @@
 #include <QPainter>
+#include <QSvgGenerator>
+#include <QFileDialog>
 #include "draw.h"
 
 #include <iostream>
@@ -39,10 +41,10 @@ bool performCommand(QPainter *qp, const vector<string> &args)
         else if (strstr(category, "OPN"))
             color = QColor::fromRgb(238, 237, 105);
         else
-            color = Qt::red;
+            color = QColor::fromRgb(190, 38, 76);
         QBrush brush(color);
         qp->setBrush(brush);
-        QPen pen(Qt::black, 0, Qt::SolidLine);
+        QPen pen(Qt::black, 1, Qt::SolidLine);
         qp->setPen(pen);
         qp->drawEllipse(x - 14, y - 14, 28, 28);
         QFont font;
@@ -76,15 +78,36 @@ bool performCommand(QPainter *qp, const vector<string> &args)
 Draw::Draw(QWidget *parent)
     : QWidget(parent)
 {
+    this->renderSvgFile();
 }
 
 void Draw::paintEvent(QPaintEvent *e)
 {
-
     Q_UNUSED(e);
 
     QPainter qp(this);
     drawGraph(&qp);
+}
+
+void Draw::renderSvgFile()
+{
+    QString newPath = QFileDialog::getSaveFileName(this, tr("Save SVG"),
+                                                   path, tr("SVG files (*.svg)"));
+
+    if (newPath.isEmpty())
+        return;
+
+    path = newPath;
+
+    QSvgGenerator generator;
+    generator.setFileName(path);
+    generator.setSize(QSize(1000, 1000));
+    generator.setViewBox(QRect(0, 0, 1000, 1000));
+
+    QPainter painter;
+    painter.begin(&generator);
+    drawGraph(&painter);
+    painter.end();
 }
 
 void Draw::drawGraph(QPainter *qp)
