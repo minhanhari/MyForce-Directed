@@ -249,12 +249,15 @@ void ForceDirectedLayout(struct Graph *graph, int max_iteration)
     printf("Graph placed with force-directed layout!\n");
 }
 
-void LocalMinimum(struct Graph *gr, double Lo, double K)
+void LocalMinimum(struct Graph *gr, double eps)
 {
     // Two dimensional array of shortest path between two vertexes
     // Calculate using Floyd-Warshall algorithm
     int **d = floyd_warshall(*gr);
     int v_num = gr->vertexes_num;
+    int e_num = gr->edges_num;
+    double Lo = LENGTH * 10 / e_num;
+    double K = 100;
 
     int d_max = d[0][0];
     for (int i = 0; i < v_num; i++)
@@ -282,7 +285,6 @@ void LocalMinimum(struct Graph *gr, double Lo, double K)
     // Moving the vertex with highest energy decrease
     double *Delta = (double *)malloc(sizeof(double) * v_num);
     int max_i = calcDelta(gr, k, l, Delta);
-    double eps = 0.001;
     while (Delta[max_i] > eps)
     {
         while (Delta[max_i] > eps)
