@@ -9,6 +9,7 @@ struct Edge
 {
     struct Vertex *start;
     struct Vertex *end;
+    double weight;
 };
 
 void printEdge(struct Edge edge);

@@ -71,6 +71,6 @@ struct EdgeList *addEdge(struct EdgeList **list, struct Edge *edge)
             lastEdge->nextPtr = toAdd;
     }
 
-    printf("Edge %s - %s added to graph.\n", edge->start->name, edge->end->name);
+    printf("Edge %s - %s %f added to graph.\n", edge->start->name, edge->end->name, edge->weight);
     return toAdd;
 }

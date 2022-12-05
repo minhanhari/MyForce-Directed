@@ -48,7 +48,8 @@ bool performCommand(QPainter *qp, const vector<string> &args)
         qp->setPen(pen);
         qp->drawEllipse(x - 14, y - 14, 28, 28);
         QFont font;
-        font.setPointSize(6);
+        font.setPointSize(12);
+        font.setFamily("Arial");
         qp->setFont(font);
         qp->drawText(x + 14, y + 14, args[1].c_str());
         return true;
@@ -56,15 +57,17 @@ bool performCommand(QPainter *qp, const vector<string> &args)
 
     if (args[0] == "e" || args[0] == "edge")
     {
-        if (args.size() != 5)
+        if (args.size() != 6)
         {
             cerr << "Wrong number of arguments vertex" << endl;
             return false;
         }
         int x1 = stoi(args[1]), y1 = stoi(args[2]);
         int x2 = stoi(args[3]), y2 = stoi(args[4]);
+        double w = stod(args[5]);
 
-        QPen pen(Qt::lightGray, 2, Qt::SolidLine);
+        QColor color = QColor(1, 1, 1, (int)(abs(w) * 255.0));
+        QPen pen(color, 2, Qt::SolidLine);
         qp->setPen(pen);
         qp->drawLine(x1, y1, x2, y2);
 

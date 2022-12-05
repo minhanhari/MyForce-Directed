@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #include "include/graph.h"
 #include "include/vertex.h"
 #include "include/vector.h"
@@ -58,12 +59,12 @@ struct Graph *readGraphFromFile(const char *filename)
         exit(1);
     }
 
-    char *str = (char *)malloc(20);
+    char *str = (char *)malloc(50);
 
     struct VertexList *vert_list = NULL;
     struct EdgeList *edge_list = NULL;
 
-    while (fgets(str, 10, f) != NULL)
+    while (fgets(str, 50, f) != NULL)
     {
         char *x = (char *)malloc(10);
         if (sscanf(str, "%s", x) == 1)
@@ -73,7 +74,8 @@ struct Graph *readGraphFromFile(const char *filename)
             a->location = new_vector(0, 0);
             a = addVertex(&vert_list, a)->data;
             char *y = (char *)malloc(10);
-            if (sscanf(str, "%s %s", x, y) == 2)
+            double w;
+            if (sscanf(str, "%s %s %lf", x, y, &w) == 3)
             {
                 struct Vertex *b = (struct Vertex *)malloc(sizeof(struct Vertex));
                 b->name = y;
@@ -83,6 +85,7 @@ struct Graph *readGraphFromFile(const char *filename)
                 struct Edge *e = (struct Edge *)malloc(sizeof(struct Edge));
                 e->start = a;
                 e->end = b;
+                e->weight = w;
                 e = addEdge(&edge_list, e)->data;
             }
         }
@@ -123,7 +126,7 @@ int main()
     {
         struct Vertex v_st = *gr->edges[i].start;
         struct Vertex v_en = *gr->edges[i].end;
-        fprintf(f, "e %i %i %i %i\n", (int)getX(v_st), (int)getY(v_st), (int)getX(v_en), (int)getY(v_en));
+        fprintf(f, "e %i %i %i %i %f\n", (int)getX(v_st), (int)getY(v_st), (int)getX(v_en), (int)getY(v_en), gr->edges[i].weight);
     }
 
     for (int i = 0; i < gr->vertexes_num; i++)

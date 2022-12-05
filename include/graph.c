@@ -216,7 +216,7 @@ void LocalMinimum(struct Graph *gr, double eps)
     int **d = floyd_warshall(*gr);
     int v_num = gr->vertexes_num;
     int e_num = gr->edges_num;
-    double Lo = LENGTH * 10 / e_num;
+    double Lo = LENGTH * 5 / e_num;
     double K = 100;
 
     int d_max = d[0][0];
@@ -279,6 +279,8 @@ void LocalMinimum(struct Graph *gr, double eps)
 
         max_i = calcDelta(gr, k, l, Delta);
     }
+    free(l);
+    free(k);
     printf("Graph placed with local minimum layout!\n");
 }
 
