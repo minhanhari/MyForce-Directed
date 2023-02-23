@@ -4,6 +4,8 @@
 #include "include/vertex.h"
 #include "include/vector.h"
 
+#include "include/global.h"
+
 const int DEFAULT_MAX_ITERATIONS = 100;
 const double DEFAULT_EPSILON = 0.01;
 
@@ -111,9 +113,7 @@ int main()
     // ForceDirectedLayout(gr, DEFAULT_MAX_ITERATIONS);
     LocalMinimum(gr, DEFAULT_EPSILON);
 
-    double width = 1000;
-    double height = 1000;
-    ArrangeVertexPosition(gr, width, height);
+    ArrangeVertexPosition(gr, CANVAS_WIDTH, CANVAS_HEIGHT);
 
     FILE *f = fopen("out_graph.txt", "w");
     if (f == NULL)

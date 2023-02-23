@@ -1,0 +1,2 @@
+#define CANVAS_HEIGHT 1000
+#define CANVAS_WIDTH 1000

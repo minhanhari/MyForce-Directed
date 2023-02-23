@@ -104,8 +104,8 @@ void Draw::renderSvgFile()
 
     QSvgGenerator generator;
     generator.setFileName(path);
-    generator.setSize(QSize(1000, 1000));
-    generator.setViewBox(QRect(0, 0, 1000, 1000));
+    generator.setSize(QSize(CANVAS_WIDTH, CANVAS_HEIGHT));
+    generator.setViewBox(QRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT));
 
     QPainter painter;
     painter.begin(&generator);

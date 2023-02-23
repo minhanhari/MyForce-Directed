@@ -3,6 +3,8 @@
 #include <QWidget>
 #include <QSvgGenerator>
 
+#include "../include/global.h"
+
 class Draw : public QWidget
 {
 
